@@ -1,801 +1,1300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Zainab Tajudeen Omowumi | Portfolio</title>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Icons -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      scroll-behavior:smooth;
-    }
-
-    :root{
-      --navy:#081B33;
-      --green:#0D8B6F;
-      --white:#ffffff;
-      --light:#f4f7f9;
-      --gray:#6b7280;
-      --gold:#D4AF37;
-    }
-
-    body{
-      font-family:'Inter',sans-serif;
-      background:var(--white);
-      color:var(--navy);
-      line-height:1.6;
-    }
-
-    a{
-      text-decoration:none;
-    }
-
-    .container{
-      width:90%;
-      max-width:1200px;
-      margin:auto;
-    }
-
-    section{
-      padding:90px 0;
-    }
-
-    .section-title{
-      font-size:2.3rem;
-      margin-bottom:15px;
-      font-weight:800;
-    }
-
-    .section-subtitle{
-      color:var(--gray);
-      max-width:650px;
-      margin-bottom:40px;
-    }
-
-    /* NAV */
-
-    nav{
-      position:fixed;
-      width:100%;
-      top:0;
-      z-index:999;
-      background:rgba(255,255,255,0.95);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid #eee;
-    }
-
-    .nav-content{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:18px 0;
-    }
-
-    .logo{
-      font-weight:800;
-      font-size:1rem;
-      color:var(--navy);
-    }
-
-    .nav-links{
-      display:flex;
-      gap:25px;
-    }
-
-    .nav-links a{
-      color:var(--navy);
-      font-size:0.95rem;
-      font-weight:500;
-    }
-
-    /* HERO */
-
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      background:linear-gradient(to bottom right,#ffffff,#f6faf9);
-    }
-
-    .hero-content{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:60px;
-      align-items:center;
-    }
-
-    .hero-text h1{
-      font-size:4rem;
-      line-height:1.1;
-      margin-bottom:20px;
-      font-weight:800;
-    }
-
-    .hero-text h2{
-      color:var(--green);
-      font-size:1.2rem;
-      margin-bottom:20px;
-      font-weight:600;
-    }
-
-    .hero-text p{
-      color:var(--gray);
-      max-width:550px;
-      margin-bottom:30px;
-      font-size:1.05rem;
-    }
-
-    .hero-buttons{
-      display:flex;
-      gap:15px;
-      flex-wrap:wrap;
-      margin-bottom:35px;
-    }
-
-    .btn{
-      padding:14px 24px;
-      border-radius:10px;
-      font-weight:600;
-      transition:0.3s ease;
-      display:inline-block;
-    }
-
-    .btn-primary{
-      background:var(--green);
-      color:white;
-    }
-
-    .btn-primary:hover{
-      transform:translateY(-3px);
-      background:#08745d;
-    }
-
-    .btn-outline{
-      border:1px solid #dcdcdc;
-      color:var(--navy);
-    }
-
-    .btn-outline:hover{
-      background:var(--navy);
-      color:white;
-    }
-
-    .stats{
-      display:flex;
-      gap:30px;
-      flex-wrap:wrap;
-      margin-bottom:25px;
-    }
-
-    .stat h3{
-      color:var(--green);
-      font-size:1.7rem;
-      margin-bottom:5px;
-    }
-
-    .stat p{
-      font-size:0.9rem;
-      margin:0;
-    }
-
-    .socials{
-      display:flex;
-      gap:18px;
-      margin-top:10px;
-    }
-
-    .socials a{
-      width:42px;
-      height:42px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:var(--light);
-      color:var(--navy);
-      transition:0.3s;
-    }
-
-    .socials a:hover{
-      background:var(--green);
-      color:white;
-    }
-
-    .hero-image{
-      display:flex;
-      justify-content:center;
-    }
-
-    .hero-image img{
-      width:360px;
-      height:360px;
-      object-fit:cover;
-      border-radius:25px;
-      box-shadow:0 20px 60px rgba(0,0,0,0.08);
-      border:6px solid white;
-    }
-
-    /* ABOUT */
-
-    .about-box{
-      background:var(--light);
-      padding:40px;
-      border-radius:24px;
-    }
-
-    .about-box p{
-      max-width:850px;
-      color:var(--gray);
-      font-size:1.02rem;
-    }
-
-    /* SKILLS */
-
-    .skills-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:25px;
-    }
-
-    .skill-card{
-      background:white;
-      border:1px solid #ececec;
-      padding:30px;
-      border-radius:20px;
-      transition:0.3s;
-    }
-
-    .skill-card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 15px 40px rgba(0,0,0,0.06);
-    }
-
-    .skill-card h3{
-      margin-bottom:20px;
-      color:var(--green);
-    }
-
-    .tags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
-
-    .tag{
-      padding:10px 14px;
-      background:var(--light);
-      border-radius:30px;
-      font-size:0.85rem;
-      color:var(--navy);
-      font-weight:500;
-    }
-
-    /* PROJECTS */
-
-    .projects-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-      gap:30px;
-    }
-
-    .project-card{
-      background:white;
-      border-radius:22px;
-      overflow:hidden;
-      border:1px solid #ececec;
-      transition:0.3s;
-    }
-
-    .project-card:hover{
-      transform:translateY(-8px);
-      box-shadow:0 20px 50px rgba(0,0,0,0.08);
-    }
-
-    .project-content{
-      padding:30px;
-    }
-
-    .project-role{
-      color:var(--green);
-      font-weight:600;
-      margin-bottom:10px;
-    }
-
-    .project-card h3{
-      margin-bottom:15px;
-      font-size:1.3rem;
-    }
-
-    .project-card p{
-      color:var(--gray);
-      font-size:0.95rem;
-      margin-bottom:20px;
-    }
-
-    .impact{
-      background:#f8fafb;
-      padding:14px;
-      border-radius:12px;
-      margin-bottom:20px;
-      font-size:0.92rem;
-      border-left:4px solid var(--gold);
-    }
-
-    /* PORTFOLIO */
-
-    .portfolio-box{
-      background:linear-gradient(to right,var(--navy),#0d2748);
-      color:white;
-      padding:50px;
-      border-radius:30px;
-      text-align:center;
-    }
-
-    .portfolio-box p{
-      max-width:700px;
-      margin:20px auto 30px;
-      opacity:0.9;
-    }
-
-    /* CONTACT */
-
-    .contact-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:40px;
-    }
-
-    .contact-info p{
-      margin-bottom:15px;
-      color:var(--gray);
-    }
-
-    .contact-form{
-      display:flex;
-      flex-direction:column;
-      gap:15px;
-    }
-
-    .contact-form input,
-    .contact-form textarea{
-      padding:15px;
-      border-radius:12px;
-      border:1px solid #ddd;
-      font-family:inherit;
-    }
-
-    textarea{
-      min-height:140px;
-      resize:none;
-    }
-
-    /* FOOTER */
-
-    footer{
-      background:var(--navy);
-      color:white;
-      text-align:center;
-      padding:40px 20px;
-    }
-
-    footer p{
-      opacity:0.8;
-      margin-top:10px;
-    }
-
-    /* ANIMATION */
-
-    .fade-up{
-      animation:fadeUp 1s ease forwards;
-    }
-
-    @keyframes fadeUp{
-      from{
-        opacity:0;
-        transform:translateY(30px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
-    /* MOBILE */
-
-    @media(max-width:900px){
-
-      .hero-content,
-      .contact-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero{
-        padding-top:120px;
-      }
-
-      .hero-text h1{
-        font-size:2.8rem;
-      }
-
-      .hero-image img{
-        width:300px;
-        height:300px;
-      }
-
-      .nav-links{
-        display:none;
-      }
-    }
-
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Zainab Tajudeen Omowumi | Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+:root{
+
+--bg:#07121F;
+
+--card:rgba(255,255,255,0.05);
+
+--text:#F8FAFC;
+--muted:#A8B3C2;
+
+--green:#19D39A;
+--blue:#4F8CFF;
+--gold:#F3C969;
+
+--line:rgba(255,255,255,0.08);
+
+--shadow:0 25px 60px rgba(0,0,0,0.35);
+
+}
+
+/* BODY */
+
+body{
+
+font-family:'Manrope',sans-serif;
+
+background:
+radial-gradient(circle at top left, rgba(25,211,154,0.18), transparent 20%),
+radial-gradient(circle at top right, rgba(79,140,255,0.16), transparent 25%),
+radial-gradient(circle at bottom left, rgba(243,201,105,0.10), transparent 20%),
+linear-gradient(135deg,#07121F 0%, #0A192B 45%, #07121F 100%);
+
+color:var(--text);
+
+overflow-x:hidden;
+
+position:relative;
+
+}
+
+/* PREMIUM GRID OVERLAY */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+background-image:
+linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+
+background-size:45px 45px;
+
+mask-image:linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+
+pointer-events:none;
+
+z-index:-1;
+
+}
+
+.container{
+width:90%;
+max-width:1180px;
+margin:auto;
+}
+
+section{
+padding:38px 0;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+/* NAVBAR */
+
+nav{
+
+position:fixed;
+
+top:0;
+
+width:100%;
+
+z-index:999;
+
+background:rgba(7,18,31,0.75);
+
+backdrop-filter:blur(18px);
+
+border-bottom:1px solid var(--line);
+
+}
+
+.navbar{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:18px 0;
+
+}
+
+.logo{
+
+font-size:1rem;
+
+font-weight:800;
+
+letter-spacing:1px;
+
+}
+
+.logo span{
+color:var(--green);
+}
+
+.nav-links{
+display:flex;
+gap:26px;
+}
+
+.nav-links a{
+
+font-size:0.92rem;
+
+color:var(--muted);
+
+font-weight:600;
+
+transition:0.3s;
+
+}
+
+.nav-links a:hover{
+color:white;
+}
+
+/* HERO */
+
+.hero{
+
+min-height:90vh;
+
+display:flex;
+
+align-items:center;
+
+padding-top:95px;
+
+}
+
+.hero-grid{
+
+display:grid;
+
+grid-template-columns:1.1fr 0.9fr;
+
+gap:35px;
+
+align-items:center;
+
+}
+
+.badge{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:10px 16px;
+
+background:rgba(25,211,154,0.08);
+
+border:1px solid rgba(25,211,154,0.2);
+
+border-radius:40px;
+
+font-size:0.82rem;
+
+font-weight:600;
+
+color:var(--green);
+
+margin-bottom:20px;
+
+}
+
+.hero h1{
+
+font-size:4.2rem;
+
+line-height:1;
+
+margin-bottom:16px;
+
+font-weight:800;
+
+max-width:650px;
+
+}
+
+.hero h2{
+
+font-size:1.08rem;
+
+font-weight:600;
+
+color:var(--gold);
+
+margin-bottom:18px;
+
+}
+
+.hero p{
+
+font-size:0.98rem;
+
+line-height:1.8;
+
+color:var(--muted);
+
+max-width:560px;
+
+margin-bottom:25px;
+
+}
+
+/* BUTTONS */
+
+.hero-buttons{
+
+display:flex;
+
+gap:14px;
+
+flex-wrap:wrap;
+
+margin-bottom:28px;
+
+}
+
+.btn{
+
+padding:14px 24px;
+
+border-radius:14px;
+
+font-size:0.9rem;
+
+font-weight:700;
+
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
+
+transition:0.3s;
+
+}
+
+.btn-primary{
+
+background:linear-gradient(135deg,var(--green),#0FB981);
+
+color:white;
+
+box-shadow:0 14px 35px rgba(25,211,154,0.25);
+
+}
+
+.btn-primary:hover{
+transform:translateY(-3px);
+}
+
+.btn-outline{
+
+border:1px solid var(--line);
+
+background:rgba(255,255,255,0.03);
+
+color:white;
+
+}
+
+.btn-outline:hover{
+
+background:white;
+
+color:#07121F;
+
+}
+
+/* STATS */
+
+.stats{
+
+display:flex;
+
+gap:16px;
+
+flex-wrap:wrap;
+
+margin-bottom:25px;
+
+}
+
+.stat{
+
+background:rgba(255,255,255,0.04);
+
+backdrop-filter:blur(18px);
+
+border:1px solid var(--line);
+
+padding:16px 18px;
+
+border-radius:18px;
+
+min-width:145px;
+
+}
+
+.stat h3{
+
+font-size:1.5rem;
+
+margin-bottom:4px;
+
+color:var(--green);
+
+}
+
+.stat p{
+
+font-size:0.84rem;
+
+color:var(--muted);
+
+}
+
+/* SOCIALS */
+
+.socials{
+display:flex;
+gap:12px;
+}
+
+.socials a{
+
+width:46px;
+
+height:46px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+border-radius:15px;
+
+background:rgba(255,255,255,0.04);
+
+border:1px solid var(--line);
+
+transition:0.3s;
+
+}
+
+.socials a:hover{
+
+background:linear-gradient(135deg,var(--green),var(--blue));
+
+transform:translateY(-4px);
+
+}
+
+/* IMAGE */
+
+.hero-image{
+display:flex;
+justify-content:center;
+}
+
+.image-box{
+position:relative;
+}
+
+.image-box::before{
+
+content:"";
+
+position:absolute;
+
+inset:-12px;
+
+background:
+linear-gradient(135deg,
+rgba(25,211,154,0.6),
+rgba(79,140,255,0.5),
+rgba(243,201,105,0.35));
+
+filter:blur(20px);
+
+border-radius:35px;
+
+z-index:-1;
+
+}
+
+.image-box img{
+
+width:350px;
+
+height:420px;
+
+object-fit:cover;
+
+border-radius:30px;
+
+border:1px solid rgba(255,255,255,0.1);
+
+box-shadow:var(--shadow);
+
+}
+
+/* SECTION TAG */
+
+.section-tag{
+
+font-size:0.8rem;
+
+font-weight:700;
+
+letter-spacing:1px;
+
+text-transform:uppercase;
+
+color:var(--green);
+
+margin-bottom:14px;
+
+}
+
+/* ABOUT */
+
+.about-card{
+
+background:rgba(255,255,255,0.04);
+
+backdrop-filter:blur(18px);
+
+border:1px solid var(--line);
+
+padding:32px;
+
+border-radius:28px;
+
+}
+
+.about-card h3{
+
+font-size:2rem;
+
+margin-bottom:14px;
+
+}
+
+.about-card p{
+
+max-width:920px;
+
+line-height:1.8;
+
+font-size:0.96rem;
+
+color:var(--muted);
+
+}
+
+/* SKILLS */
+
+.skills-grid{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:18px;
+
+margin-top:22px;
+
+}
+
+.skill-card{
+
+background:rgba(255,255,255,0.04);
+
+backdrop-filter:blur(18px);
+
+border:1px solid var(--line);
+
+padding:25px;
+
+border-radius:24px;
+
+transition:0.3s;
+
+}
+
+.skill-card:hover{
+
+transform:translateY(-5px);
+
+border-color:rgba(25,211,154,0.25);
+
+}
+
+.skill-card h4{
+
+margin-bottom:16px;
+
+font-size:1.05rem;
+
+}
+
+.tags{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+}
+
+.tag{
+
+padding:9px 13px;
+
+border-radius:40px;
+
+font-size:0.8rem;
+
+background:rgba(255,255,255,0.05);
+
+color:#DCE4EC;
+
+}
+
+/* PROJECTS */
+
+.projects-grid{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:18px;
+
+margin-top:22px;
+
+}
+
+.project-card{
+
+background:rgba(255,255,255,0.04);
+
+backdrop-filter:blur(18px);
+
+border:1px solid var(--line);
+
+padding:25px;
+
+border-radius:28px;
+
+transition:0.35s;
+
+}
+
+.project-card:hover{
+
+transform:translateY(-7px);
+
+border-color:rgba(243,201,105,0.25);
+
+}
+
+.project-role{
+
+font-size:0.76rem;
+
+font-weight:700;
+
+color:var(--green);
+
+letter-spacing:1px;
+
+margin-bottom:12px;
+
+text-transform:uppercase;
+
+}
+
+.project-card h3{
+
+font-size:1.25rem;
+
+line-height:1.5;
+
+margin-bottom:14px;
+
+}
+
+.project-card p{
+
+font-size:0.92rem;
+
+line-height:1.7;
+
+color:var(--muted);
+
+margin-bottom:18px;
+
+}
+
+.impact{
+
+padding:14px;
+
+border-radius:14px;
+
+background:rgba(255,255,255,0.04);
+
+border-left:3px solid var(--gold);
+
+font-size:0.88rem;
+
+margin-bottom:18px;
+
+}
+
+.project-btn{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
+
+font-weight:700;
+
+color:var(--green);
+
+margin-top:8px;
+
+}
+
+/* PORTFOLIO CTA */
+
+.portfolio-box{
+
+background:
+linear-gradient(135deg,
+rgba(25,211,154,0.10),
+rgba(79,140,255,0.08));
+
+backdrop-filter:blur(20px);
+
+border:1px solid var(--line);
+
+padding:38px;
+
+border-radius:30px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:25px;
+
+margin-top:18px;
+
+}
+
+.portfolio-box h3{
+
+font-size:2rem;
+
+margin-bottom:12px;
+
+}
+
+.portfolio-box p{
+
+font-size:0.95rem;
+
+line-height:1.8;
+
+max-width:650px;
+
+color:var(--muted);
+
+}
+
+/* CONTACT */
+
+.contact-box{
+
+display:grid;
+
+grid-template-columns:0.9fr 1.1fr;
+
+gap:18px;
+
+margin-top:22px;
+
+}
+
+.contact-info,
+.contact-form{
+
+background:rgba(255,255,255,0.04);
+
+backdrop-filter:blur(18px);
+
+border:1px solid var(--line);
+
+padding:28px;
+
+border-radius:28px;
+
+}
+
+.contact-info h3{
+
+font-size:1.5rem;
+
+margin-bottom:18px;
+
+}
+
+.contact-info p{
+
+font-size:0.95rem;
+
+line-height:1.7;
+
+margin-bottom:14px;
+
+color:var(--muted);
+
+}
+
+.contact-form{
+
+display:flex;
+
+flex-direction:column;
+
+gap:14px;
+
+}
+
+.contact-form input,
+.contact-form textarea{
+
+background:rgba(255,255,255,0.04);
+
+border:1px solid var(--line);
+
+padding:14px;
+
+border-radius:14px;
+
+font-family:inherit;
+
+color:white;
+
+}
+
+.contact-form textarea{
+
+height:130px;
+
+resize:none;
+
+}
+
+.contact-form button{
+border:none;
+cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+
+padding:28px 0;
+
+text-align:center;
+
+font-size:0.9rem;
+
+color:var(--muted);
+
+}
+
+/* MOBILE */
+
+@media(max-width:980px){
+
+.hero-grid,
+.skills-grid,
+.projects-grid,
+.contact-box,
+.portfolio-box{
+
+grid-template-columns:1fr;
+
+}
+
+.hero{
+
+padding-top:120px;
+
+}
+
+.hero h1{
+font-size:3rem;
+}
+
+.image-box img{
+
+width:100%;
+max-width:330px;
+
+height:400px;
+
+}
+
+.nav-links{
+display:none;
+}
+
+section{
+padding:32px 0;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
+<!-- NAVBAR -->
 
-  <nav>
-    <div class="container nav-content">
-      <div class="logo">ZT.</div>
+<nav>
 
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </nav>
+<div class="container navbar">
 
-  <!-- HERO -->
+<div class="logo">
+ZT<span>.</span>
+</div>
 
-  <section class="hero">
-    <div class="container hero-content fade-up">
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
 
-      <div class="hero-text">
+</div>
 
-        <h1>Zainab Tajudeen Omowumi</h1>
+</nav>
 
-        <h2>Data Analyst | M&E Officer | Program Officer | Researcher</h2>
-
-        <p>
-          Using data, research, and program strategy to drive meaningful health and social impact.
-        </p>
-
-        <div class="hero-buttons">
-          <a href="zainab-cv.pdf" class="btn btn-primary" download>Download CV</a>
-          <a href="#projects" class="btn btn-outline">View Portfolio</a>
-          <a href="#contact" class="btn btn-outline">Contact Me</a>
-        </div>
-
-        <div class="stats">
-          <div class="stat">
-            <h3>2+</h3>
-            <p>Years Experience</p>
-          </div>
-
-          <div class="stat">
-            <h3>6+</h3>
-            <p>Projects</p>
-          </div>
-
-          <div class="stat">
-            <h3>50+</h3>
-            <p>Stakeholders Reached</p>
-          </div>
-        </div>
+<!-- HERO -->
 
-        <div class="socials">
-          <a href="https://linkedin.com/in/zainab-tajudeen-omowumi-9005b3219" target="_blank">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
+<section class="hero">
 
-          <a href="https://github.com/ZainabTajudeen" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
+<div class="container hero-grid">
 
-          <a href="mailto:daramolaomowunmi62@gmail.com">
-            <i class="fas fa-envelope"></i>
-          </a>
-        </div>
+<div>
 
-      </div>
+<div class="badge">
+<i class="fa-solid fa-chart-line"></i>
+Public Health & Data Professional
+</div>
 
-      <div class="hero-image">
-        <!-- Replace with uploaded professional image -->
-        <img src="photo.png" alt="Zainab Tajudeen">
-      </div>
+<h1>
+Zainab Tajudeen Omowumi
+</h1>
 
-    </div>
-  </section>
+<h2>
+Data Analyst • M&E Officer • Program Officer • Researcher
+</h2>
 
-  <!-- ABOUT -->
+<p>
+Using data, research, and strategic program coordination to drive meaningful health and social impact across communities and development initiatives.
+</p>
 
-  <section id="about">
-    <div class="container">
+<div class="hero-buttons">
 
-      <h2 class="section-title">About</h2>
+<a href="cv.pdf" class="btn btn-primary" download>
+<i class="fa-solid fa-download"></i>
+Download CV
+</a>
 
-      <div class="about-box">
-        <p>
-          I am a data-driven public health professional with experience in data analytics, monitoring & evaluation, research, and program coordination. Passionate about evidence-based decision-making and SDG advocacy, I support impactful initiatives through strategic reporting, stakeholder engagement, and actionable insights that improve health and social outcomes.
-        </p>
-      </div>
+<a href="#projects" class="btn btn-outline">
+View Portfolio
+</a>
 
-    </div>
-  </section>
+<a href="#contact" class="btn btn-outline">
+Contact Me
+</a>
 
-  <!-- SKILLS -->
+</div>
 
-  <section id="skills">
-    <div class="container">
+<div class="stats">
 
-      <h2 class="section-title">Skills</h2>
-      <p class="section-subtitle">
-        Focused expertise across analytics, monitoring & evaluation, and development programming.
-      </p>
+<div class="stat">
+<h3>2+</h3>
+<p>Years Experience</p>
+</div>
 
-      <div class="skills-grid">
+<div class="stat">
+<h3>6+</h3>
+<p>Projects</p>
+</div>
 
-        <div class="skill-card">
-          <h3>Data Analytics</h3>
+<div class="stat">
+<h3>50+</h3>
+<p>Stakeholders Reached</p>
+</div>
 
-          <div class="tags">
-            <span class="tag">Excel</span>
-            <span class="tag">SQL</span>
-            <span class="tag">Power BI</span>
-            <span class="tag">Data Visualization</span>
-            <span class="tag">Dashboard Reporting</span>
-          </div>
-        </div>
+</div>
 
-        <div class="skill-card">
-          <h3>M&E & Research</h3>
+<div class="socials">
 
-          <div class="tags">
-            <span class="tag">Monitoring & Evaluation</span>
-            <span class="tag">KPI Tracking</span>
-            <span class="tag">Research Reporting</span>
-            <span class="tag">Logframe Development</span>
-            <span class="tag">Program Evaluation</span>
-          </div>
-        </div>
+<a href="https://linkedin.com/in/zainab-tajudeen-omowumi-9005b3219" target="_blank">
+<i class="fab fa-linkedin-in"></i>
+</a>
 
-        <div class="skill-card">
-          <h3>Program & Advocacy</h3>
+<a href="https://github.com/ZainabTajudeen" target="_blank">
+<i class="fab fa-github"></i>
+</a>
 
-          <div class="tags">
-            <span class="tag">Stakeholder Engagement</span>
-            <span class="tag">SDG Advocacy</span>
-            <span class="tag">Community Outreach</span>
-            <span class="tag">Program Coordination</span>
-            <span class="tag">Public Speaking</span>
-          </div>
-        </div>
+<a href="mailto:daramolaomowunmi62@gmail.com">
+<i class="fa-solid fa-envelope"></i>
+</a>
 
-      </div>
+</div>
 
-    </div>
-  </section>
+</div>
 
-  <!-- PROJECTS -->
+<div class="hero-image">
 
-  <section id="projects">
-    <div class="container">
+<div class="image-box">
+<img src="profile.jpg" alt="Zainab Tajudeen">
+</div>
 
-      <h2 class="section-title">Featured Projects</h2>
+</div>
 
-      <p class="section-subtitle">
-        Selected work across public health analytics, monitoring & evaluation, and advocacy.
-      </p>
+</div>
 
-      <div class="projects-grid">
+</section>
 
-        <!-- PROJECT 1 -->
+<!-- ABOUT -->
 
-        <div class="project-card">
-          <div class="project-content">
+<section id="about">
 
-            <div class="project-role">Data Analyst</div>
+<div class="container">
 
-            <h3>Global Life Expectancy Analysis (2000–2021)</h3>
+<div class="about-card">
 
-            <p>
-              Analyzed WHO global health data across 183 countries to identify life expectancy trends, gender disparities, and COVID-19 impacts.
-            </p>
+<div class="section-tag">
+About
+</div>
 
-            <div class="impact">
-              Global life expectancy increased by 5.6 years before the pandemic.
-            </div>
+<h3>
+Data-driven. Impact-focused. Development-oriented.
+</h3>
 
-            <div class="tags" style="margin-bottom:25px;">
-              <span class="tag">Data Analysis</span>
-              <span class="tag">Excel</span>
-              <span class="tag">Visualization</span>
-              <span class="tag">Public Health</span>
-            </div>
+<p>
+I support public health and development programs through data analytics, monitoring & evaluation, research reporting, and stakeholder engagement — translating evidence into actionable insights that strengthen decision-making and social impact.
+</p>
 
-            <a href="https://docs.google.com/presentation/d/1FGTpEz0JITHlrHubCT_D8s1F-y9S3f3J/edit?usp=drive_link&ouid=108336791458571872673&rtpof=true&sd=true"
-               target="_blank"
-               class="btn btn-primary">
-              View Project
-            </a>
+</div>
 
-          </div>
-        </div>
+</div>
 
-        <!-- PROJECT 2 -->
+</section>
 
-        <div class="project-card">
-          <div class="project-content">
+<!-- SKILLS -->
 
-            <div class="project-role">M&E Officer</div>
+<section id="skills">
 
-            <h3>Women in Digital Health Leadership Roundtable</h3>
+<div class="container">
 
-            <p>
-              Developed an M&E framework for a regional digital health policy roundtable in partnership with Johns Hopkins Bloomberg School of Public Health.
-            </p>
+<div class="section-tag">
+Core Expertise
+</div>
 
-            <div class="impact">
-              Tracked 20+ stakeholder commitments across Africa.
-            </div>
+<div class="skills-grid">
 
-            <div class="tags" style="margin-bottom:25px;">
-              <span class="tag">M&E</span>
-              <span class="tag">KPI Development</span>
-              <span class="tag">Reporting</span>
-              <span class="tag">Stakeholder Engagement</span>
-            </div>
+<div class="skill-card">
 
-            <a href="https://docs.google.com/document/d/1TPnOzxWNxpOWSaE3LG5tIbKFEmRmjE-B/edit?usp=sharing&ouid=108336791458571872673&rtpof=true&sd=true"
-               target="_blank"
-               class="btn btn-primary">
-              View Project
-            </a>
+<h4>Data Analytics</h4>
 
-          </div>
-        </div>
+<div class="tags">
+<span class="tag">Excel</span>
+<span class="tag">SQL</span>
+<span class="tag">Power BI</span>
+<span class="tag">Visualization</span>
+<span class="tag">Dashboard Reporting</span>
+</div>
 
-        <!-- PROJECT 3 -->
+</div>
 
-        <div class="project-card">
-          <div class="project-content">
+<div class="skill-card">
 
-            <div class="project-role">Program Officer</div>
+<h4>M&E & Research</h4>
 
-            <h3>Leave No Child Behind – SDG Advocacy Project</h3>
+<div class="tags">
+<span class="tag">Monitoring & Evaluation</span>
+<span class="tag">KPI Tracking</span>
+<span class="tag">Research Reporting</span>
+<span class="tag">Program Evaluation</span>
+</div>
 
-            <p>
-              Led a school-based SDG 4 advocacy campaign promoting inclusive and equitable education through youth engagement.
-            </p>
+</div>
 
-            <div class="impact">
-              Engaged 50+ students and multiple education stakeholders.
-            </div>
+<div class="skill-card">
 
-            <div class="tags" style="margin-bottom:25px;">
-              <span class="tag">Advocacy</span>
-              <span class="tag">Community Engagement</span>
-              <span class="tag">Program Coordination</span>
-            </div>
+<h4>Program & Advocacy</h4>
 
-            <a href="https://www.linkedin.com/posts/zainab-tajudeen-omowumi-9005b3219_leave-no-child-behind-my-sdgs-advocacy-activity-7328418827858325504-E9jK?utm_source=share&utm_medium=member_desktop&rcm=ACoAADcVYFABRIabvn5qLXAIOgF1hho5ZOgfGMk"
-               target="_blank"
-               class="btn btn-primary">
-              View Project
-            </a>
+<div class="tags">
+<span class="tag">Stakeholder Engagement</span>
+<span class="tag">SDG Advocacy</span>
+<span class="tag">Community Outreach</span>
+<span class="tag">Coordination</span>
+</div>
 
-          </div>
-        </div>
+</div>
 
-      </div>
+</div>
 
-    </div>
-  </section>
+</div>
 
-  <!-- PORTFOLIO -->
+</section>
 
-  <section>
-    <div class="container">
+<!-- PROJECTS -->
 
-      <div class="portfolio-box">
+<section id="projects">
 
-        <h2 class="section-title">View My Portfolio</h2>
+<div class="container">
 
-        <p>
-          Explore selected projects, reports, and impact-driven work across data analytics, public health, monitoring & evaluation, and advocacy.
-        </p>
+<div class="section-tag">
+Featured Projects
+</div>
 
-        <a href="https://www.notion.so/2b328457cd5680d3bfeed9e493cedc36?v=2b328457cd56815c937b000c9d85ec71&source=copy_link"
-           target="_blank"
-           class="btn btn-primary">
-          View Full Portfolio
-        </a>
+<div class="projects-grid">
 
-      </div>
+<div class="project-card">
 
-    </div>
-  </section>
+<div class="project-role">
+Data Analyst
+</div>
 
-  <!-- CONTACT -->
+<h3>
+Global Life Expectancy Analysis
+</h3>
 
-  <section id="contact">
-    <div class="container">
+<p>
+Analyzed WHO health data across 183 countries to identify trends, gender disparities, and COVID-19 impacts.
+</p>
 
-      <h2 class="section-title">Contact</h2>
+<div class="impact">
+Global life expectancy increased by 5.6 years before the pandemic.
+</div>
 
-      <div class="contact-grid">
+<a class="project-btn"
+href="https://docs.google.com/presentation/d/1FGTpEz0JITHlrHubCT_D8s1F-y9S3f3J/edit?usp=drive_link&ouid=108336791458571872673&rtpof=true&sd=true"
+target="_blank">
 
-        <div class="contact-info">
+View Project
+<i class="fa-solid fa-arrow-right"></i>
 
-          <p><strong>Email:</strong> daramolaomowunmi62@gmail.com</p>
+</a>
 
-          <p><strong>Phone:</strong> +234 8132737578</p>
+</div>
 
-          <p><strong>Location:</strong> Abuja, Nigeria</p>
+<div class="project-card">
 
-          <p>
-            <strong>LinkedIn:</strong>
-            <a href="https://linkedin.com/in/zainab-tajudeen-omowumi-9005b3219" target="_blank">
-              View Profile
-            </a>
-          </p>
+<div class="project-role">
+M&E Officer
+</div>
 
-          <p>
-            <strong>GitHub:</strong>
-            <a href="https://github.com/ZainabTajudeen" target="_blank">
-              View GitHub
-            </a>
-          </p>
+<h3>
+Women in Digital Health Leadership Roundtable
+</h3>
 
-          <p style="margin-top:25px;">
-            Let’s collaborate on impactful, data-driven solutions.
-          </p>
+<p>
+Developed an M&E framework for a regional digital health policy roundtable in partnership with Johns Hopkins Bloomberg School of Public Health.
+</p>
 
-        </div>
+<div class="impact">
+Tracked 20+ stakeholder commitments across Africa.
+</div>
 
-        <form class="contact-form">
+<a class="project-btn"
+href="https://docs.google.com/document/d/1TPnOzxWNxpOWSaE3LG5tIbKFEmRmjE-B/edit?usp=sharing&ouid=108336791458571872673&rtpof=true&sd=true"
+target="_blank">
 
-          <input type="text" placeholder="Your Name">
+View Project
+<i class="fa-solid fa-arrow-right"></i>
 
-          <input type="email" placeholder="Your Email">
+</a>
 
-          <textarea placeholder="Your Message"></textarea>
+</div>
 
-          <button class="btn btn-primary">
-            Send Message
-          </button>
+<div class="project-card">
 
-        </form>
+<div class="project-role">
+Program Officer
+</div>
 
-      </div>
+<h3>
+Leave No Child Behind – SDG Advocacy
+</h3>
 
-    </div>
-  </section>
+<p>
+Led a school-based SDG 4 advocacy campaign promoting inclusive and equitable education through youth engagement.
+</p>
 
-  <!-- FOOTER -->
+<div class="impact">
+Engaged 50+ students and multiple education stakeholders.
+</div>
 
-  <footer>
+<a class="project-btn"
+href="https://www.linkedin.com/posts/zainab-tajudeen-omowumi-9005b3219_leave-no-child-behind-my-sdgs-advocacy-activity-7328418827858325504-E9jK"
+target="_blank">
 
-    <h3>Zainab Tajudeen Omowumi</h3>
+View Project
+<i class="fa-solid fa-arrow-right"></i>
 
-    <p>
-      Data Analyst • M&E Officer • Program Officer • Researcher
-    </p>
+</a>
 
-  </footer>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PORTFOLIO -->
+
+<section>
+
+<div class="container">
+
+<div class="portfolio-box">
+
+<div>
+
+<div class="section-tag">
+Portfolio
+</div>
+
+<h3>
+View My Portfolio
+</h3>
+
+<p>
+Explore selected projects, reports, and impact-driven work across data analytics, public health, monitoring & evaluation, and advocacy.
+</p>
+
+</div>
+
+<a href="https://Zainabtajudeen.github.io/Zainab-Tajudeen"
+target="_blank"
+class="btn btn-primary">
+
+View Full Portfolio
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="container">
+
+<div class="section-tag">
+Contact
+</div>
+
+<div class="contact-box">
+
+<div class="contact-info">
+
+<h3>
+Let’s Collaborate
+</h3>
+
+<p>
+<strong>Email:</strong><br>
+daramolaomowunmi62@gmail.com
+</p>
+
+<p>
+<strong>Phone:</strong><br>
++234 8132737578
+</p>
+
+<p>
+<strong>Location:</strong><br>
+Abuja, Nigeria
+</p>
+
+<p>
+Let’s collaborate on impactful, data-driven solutions.
+</p>
+
+</div>
+
+<form class="contact-form">
+
+<input type="text" placeholder="Your Name">
+
+<input type="email" placeholder="Your Email">
+
+<textarea placeholder="Your Message"></textarea>
+
+<button class="btn btn-primary">
+Send Message
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 • Zainab Tajudeen Omowumi • Data • Research • Impact
+
+</footer>
 
 </body>
 </html>
