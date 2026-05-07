@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Zainab Tajudeen Omowumi | Data Analyst · M&E Officer · Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d1117;
+    --ivory: #f8f5f0;
+    --gold: #c9a84c;
+    --gold-light: #e8d08a;
+    --teal: #1a6b6b;
+    --teal-light: #2a9090;
+    --clay: #8b4513;
+    --mist: #e8ede9;
+    --white: #ffffff;
+    --card-bg: #ffffff;
+    --section-alt: #f0ede8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--ivory);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 4rem;
+    background: rgba(13,17,23,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 600;
+    color: var(--gold); letter-spacing: 0.04em;
+  }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: var(--ink);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(26,107,107,0.18) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-text { position: relative; z-index: 2; }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid rgba(201,168,76,0.4);
+    padding: 0.35rem 0.9rem; border-radius: 2px; margin-bottom: 1.8rem;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5.5vw, 5.5rem);
+    font-weight: 300; line-height: 1.05;
+    color: var(--white); margin-bottom: 0.6rem;
+  }
+  .hero-name em {
+    font-style: italic; color: var(--gold);
+  }
+  .hero-roles {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem; letter-spacing: 0.1em;
+    color: var(--teal-light); margin-bottom: 1.8rem;
+    display: flex; gap: 0.7rem; flex-wrap: wrap; align-items: center;
+  }
+  .hero-roles span::after { content: '·'; margin-left: 0.7rem; color: rgba(255,255,255,0.2); }
+  .hero-roles span:last-child::after { display: none; }
+  .hero-bio {
+    font-size: 1.05rem; line-height: 1.75;
+    color: rgba(255,255,255,0.65); max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--ink);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.85rem 2rem; text-decoration: none; border-radius: 2px;
+    font-weight: 700; transition: all 0.25s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.85rem 2rem; text-decoration: none; border-radius: 2px;
+    transition: all 0.25s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  /* Hero image side */
+  .hero-visual {
+    display: flex; justify-content: center; align-items: center;
+    position: relative; z-index: 2;
+  }
+  .hero-photo-wrap {
+    position: relative; width: 340px; height: 420px;
+  }
+  .hero-photo-wrap::before {
+    content: '';
+    position: absolute; top: 18px; left: 18px; right: -18px; bottom: -18px;
+    border: 2px solid rgba(201,168,76,0.35); border-radius: 4px;
+    z-index: 0;
+  }
+  .hero-photo-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+    border-radius: 4px; position: relative; z-index: 1;
+    filter: contrast(1.05) saturate(0.85);
+  }
+
+  /* Stats strip */
+  .stats-strip {
+    background: var(--gold);
+    display: flex; justify-content: center; gap: 0;
+  }
+  .stat-item {
+    padding: 1.5rem 4rem;
+    text-align: center; border-right: 1px solid rgba(13,17,23,0.15);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 600; color: var(--ink);
+    display: block;
+  }
+  .stat-lbl {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.15em;
+    color: rgba(13,17,23,0.65);
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .section-label::before {
+    content: ''; width: 32px; height: 1px; background: var(--teal);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300; line-height: 1.1;
+    color: var(--ink); margin-bottom: 3rem;
+  }
+  .section-title em { font-style: italic; color: var(--teal); }
+
+  /* ── ABOUT ── */
+  #about { background: var(--ivory); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: start;
+  }
+  .about-text p {
+    font-size: 1.05rem; line-height: 1.8; color: #3a3a3a;
+    margin-bottom: 1.2rem;
+  }
+  .about-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+  .link-chip {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.55rem 1.1rem;
+    border: 1px solid rgba(26,107,107,0.3); border-radius: 2px;
+    font-family: 'Space Mono', monospace; font-size: 0.65rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal); text-decoration: none;
+    transition: all 0.25s;
+  }
+  .link-chip:hover { background: var(--teal); color: white; }
+  .skills-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .skill-card {
+    background: white; border: 1px solid rgba(0,0,0,0.06);
+    padding: 1.2rem 1.4rem; border-radius: 4px;
+    border-left: 3px solid var(--gold);
+  }
+  .skill-card h4 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--teal); margin-bottom: 0.5rem;
+  }
+  .skill-card p { font-size: 0.82rem; color: #555; line-height: 1.5; }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--section-alt); }
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem;
+  }
+  .project-card {
+    background: white; border-radius: 4px; overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex; flex-direction: column;
+  }
+  .project-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+  .project-img {
+    width: 100%; height: 200px; object-fit: cover;
+    display: block;
+  }
+  .project-body { padding: 1.6rem; flex: 1; display: flex; flex-direction: column; }
+  .project-sector {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.4rem;
+  }
+  .project-role {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 0.8rem;
+  }
+  .project-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 600; line-height: 1.3;
+    color: var(--ink); margin-bottom: 0.8rem;
+  }
+  .project-desc {
+    font-size: 0.85rem; line-height: 1.65; color: #555;
+    flex: 1; margin-bottom: 1.2rem;
+  }
+  .project-result {
+    background: #f8f5f0; border-left: 3px solid var(--gold);
+    padding: 0.8rem 1rem; border-radius: 2px; margin-bottom: 1.2rem;
+  }
+  .project-result p {
+    font-size: 0.8rem; line-height: 1.55; color: #444;
+  }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal); text-decoration: none; font-weight: 700;
+    margin-top: auto;
+  }
+  .project-link:hover { color: var(--gold); }
+  .project-link svg { width: 12px; height: 12px; }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--ivory); }
+  .exp-list { max-width: 800px; }
+  .exp-item {
+    display: grid; grid-template-columns: 180px 1fr;
+    gap: 2rem; padding: 2rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+  }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-meta { padding-top: 0.15rem; }
+  .exp-date {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem; color: var(--teal); letter-spacing: 0.06em;
+    margin-bottom: 0.3rem;
+  }
+  .exp-org {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem; color: #888; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600; color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+  .exp-desc {
+    font-size: 0.88rem; line-height: 1.7; color: #555;
+    margin-bottom: 0.5rem;
+  }
+  .exp-impact {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem; color: var(--gold); letter-spacing: 0.04em;
+  }
+
+  /* ── CERTIFICATIONS ── */
+  #certs { background: var(--ink); }
+  #certs .section-label { color: var(--gold-light); }
+  #certs .section-label::before { background: var(--gold-light); }
+  #certs .section-title { color: white; }
+  #certs .section-title em { color: var(--gold); }
+  .certs-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+  }
+  .cert-card {
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 1.4rem 1.6rem; border-radius: 4px;
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .cert-card:hover { border-color: var(--gold); background: rgba(201,168,76,0.04); }
+  .cert-year {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem; color: var(--gold); letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 0.4rem;
+  }
+  .cert-name {
+    font-size: 0.9rem; color: white; font-weight: 500; line-height: 1.4;
+    margin-bottom: 0.25rem;
+  }
+  .cert-issuer { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--section-alt); }
+  .contact-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start;
+  }
+  .contact-intro p {
+    font-size: 1.05rem; line-height: 1.8; color: #3a3a3a; margin-bottom: 2rem;
+  }
+  .contact-items { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.4rem; background: white;
+    border-radius: 4px; border: 1px solid rgba(0,0,0,0.06);
+    text-decoration: none; transition: border-color 0.25s;
+  }
+  .contact-item:hover { border-color: var(--teal); }
+  .ci-icon {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--teal); display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .ci-icon svg { width: 16px; height: 16px; fill: white; }
+  .ci-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: #888;
+  }
+  .ci-value { font-size: 0.88rem; color: var(--ink); font-weight: 500; }
+
+  .cv-download {
+    background: var(--ink); color: white;
+    padding: 2rem; border-radius: 4px; text-align: center;
+  }
+  .cv-download h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 300; margin-bottom: 0.6rem;
+  }
+  .cv-download p { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 1.5rem; }
+  .cv-btn {
+    display: inline-block; background: var(--gold); color: var(--ink);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.85rem 2rem; text-decoration: none; border-radius: 2px; font-weight: 700;
+    transition: background 0.25s;
+  }
+  .cv-btn:hover { background: var(--gold-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.35);
+    padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+  footer p { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a {
+    font-family: 'Space Mono', monospace; font-size: 0.62rem;
+    color: rgba(255,255,255,0.35); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-text > * {
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-text > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-text > *:nth-child(2) { animation-delay: 0.22s; }
+  .hero-text > *:nth-child(3) { animation-delay: 0.34s; }
+  .hero-text > *:nth-child(4) { animation-delay: 0.46s; }
+  .hero-text > *:nth-child(5) { animation-delay: 0.58s; }
+  .hero-visual { animation: fadeUp 0.9s ease 0.5s both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    #hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; text-align: center; }
+    .hero-roles { justify-content: center; }
+    .hero-bio { margin: 0 auto 2rem; }
+    .hero-ctas { justify-content: center; }
+    .hero-visual { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .certs-grid { grid-template-columns: 1fr 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .stats-strip { flex-wrap: wrap; }
+    .stat-item { padding: 1rem 2rem; border-bottom: 1px solid rgba(13,17,23,0.1); }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ZTO</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certs">Credentials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text">
+    <div class="hero-tag">Open to Opportunities · Abuja, Nigeria</div>
+    <h1 class="hero-name">Zainab<br><em>Tajudeen</em><br>Omowumi</h1>
+    <div class="hero-roles">
+      <span>Data Analyst</span>
+      <span>M&E Officer</span>
+      <span>Program Officer</span>
+      <span>Researcher</span>
+    </div>
+    <p class="hero-bio">Turning data into decisions and evidence into impact. I work at the intersection of public health, program evaluation, and data storytelling — designing systems that hold programs accountable and drive meaningful change across Africa.</p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-photo-wrap">
+      <img src="photo.png" alt="Zainab Tajudeen Omowumi" />
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <span class="stat-num">2+</span>
+    <span class="stat-lbl">Years of Experience</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">6+</span>
+    <span class="stat-lbl">Projects Delivered</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">200+</span>
+    <span class="stat-lbl">Program Beneficiaries</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">183</span>
+    <span class="stat-lbl">Countries Analyzed</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Who I Am</div>
+  <h2 class="section-title">Data-Driven.<br><em>Impact-Led.</em></h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a dynamic, results-oriented professional with hands-on experience in data analysis, monitoring & evaluation, research, and program coordination. With a BSc (Hons) in Health Education from the University of Ilorin and a growing portfolio of cross-sector work, I bridge quantitative rigor with community-centered storytelling.</p>
+      <p>Whether I'm building M&E logframes for digital health initiatives, analyzing WHO datasets across 183 nations, or advocating for SDG 4 in classrooms — I bring the same commitment: evidence that matters, communicated with clarity.</p>
+      <div class="about-links">
+        <a href="https://linkedin.com/in/zainab-tajudeen-omowumi-9005b3219" target="_blank" class="link-chip">↗ LinkedIn</a>
+        <a href="https://github.com/ZainabTajudeen" target="_blank" class="link-chip">↗ GitHub</a>
+        <a href="https://Zainabtajudeen.github.io/Zainab-Tajudeen" target="_blank" class="link-chip">↗ Portfolio</a>
+      </div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h4>Data Analysis</h4>
+        <p>Excel (Pivot, Power Query), SQL, Power BI, Tableau, SPSS, R</p>
+      </div>
+      <div class="skill-card">
+        <h4>M&E & Research</h4>
+        <p>Logframe design, KPI dashboards, results-based frameworks, data collection & validation</p>
+      </div>
+      <div class="skill-card">
+        <h4>Program Management</h4>
+        <p>Project coordination, stakeholder engagement, grant writing, reporting</p>
+      </div>
+      <div class="skill-card">
+        <h4>Communication</h4>
+        <p>Business writing, presentations, data storytelling, policy briefs</p>
+      </div>
+      <div class="skill-card">
+        <h4>Public Health</h4>
+        <p>Health education, community outreach, health systems, epidemiology</p>
+      </div>
+      <div class="skill-card">
+        <h4>Digital Tools</h4>
+        <p>Microsoft Office Suite, Google Workspace, AI automation tools</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Portfolio</div>
+  <h2 class="section-title">Selected <em>Projects</em></h2>
+  <div class="projects-grid">
+
+    <!-- Project 1 -->
+    <div class="project-card">
+      <img src="Project_1.jpg" alt="Global Life Expectancy Analysis" class="project-img" />
+      <div class="project-body">
+        <div class="project-sector">Healthcare · WHO Data</div>
+        <div class="project-role">Data Analyst</div>
+        <h3 class="project-title">Global Life Expectancy Analysis (2000–2021)</h3>
+        <p class="project-desc">Analyzed 22 years of WHO Global Health Observatory data across 183 countries, examining long-term trends, gender differences, cross-country disparities, and the COVID-19 pandemic's impact on population health.</p>
+        <div class="project-result">
+          <p>🌍 Global life expectancy rose from 66.8 (2000) to 72.4 years (2019), a gain of 5.6 years. COVID-19 reversed ~1.5 years by 2021. Women lived 74.1 yrs vs men 67.9 yrs. Japan (84.3) vs Lesotho (50.7): a 33.6-year gap.</p>
+        </div>
+        <a href="https://docs.google.com/presentation/d/1FGTpEz0JITHlrHubCT_D8s1F-y9S3f3J/edit?usp=drive_link&ouid=108336791458571872673&rtpof=true&sd=true" target="_blank" class="project-link">
+          View Full Report
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card">
+      <img src="Project_2.jpg" alt="Women in Digital Health Leadership" class="project-img" />
+      <div class="project-body">
+        <div class="project-sector">Digital Health · Gender Equity</div>
+        <div class="project-role">M&E Officer</div>
+        <h3 class="project-title">Women in Digital Health Leadership Roundtable (IWD 2026)</h3>
+        <p class="project-desc">Developed the M&E framework for a regional digital health policy roundtable led by Digital Health Africa in partnership with Johns Hopkins Bloomberg School of Public Health, tracking stakeholder engagement and gender-responsive digital health systems.</p>
+        <div class="project-result">
+          <p>📊 M&E system tracked 80–100 participants, recognized 15–20 women leaders, and documented 20+ stakeholder commitments advancing gender-responsive digital health dialogue across Africa.</p>
+        </div>
+        <a href="https://docs.google.com/document/d/1TPnOzxWNxpOWSaE3LG5tIbKFEmRmjE-B/edit?usp=sharing&ouid=108336791458571872673&rtpof=true&sd=true" target="_blank" class="project-link">
+          View Full Report
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card">
+      <img src="Project_3.jpg" alt="Leave No Child Behind SDG Advocacy" class="project-img" />
+      <div class="project-body">
+        <div class="project-sector">Advocacy · SDG 4</div>
+        <div class="project-role">Program Officer</div>
+        <h3 class="project-title">Leave No Child Behind: SDG Advocacy Project</h3>
+        <p class="project-desc">A community-based advocacy project at Khalid Integrated Academy under Nigeria Youth SDGs Network, advancing SDG 4: Quality Education through awareness campaigns on inclusive education and equal learning opportunities for every child.</p>
+        <div class="project-result">
+          <p>🏫 Reached 1 school community, directly engaging 50+ students, 10+ teachers, and 6+ stakeholders in conversations around education rights, inclusion, and lifelong learning.</p>
+        </div>
+        <a href="https://www.linkedin.com/posts/zainab-tajudeen-omowumi-9005b3219_leave-no-child-behind-my-sdgs-advocacy-activity-7328418827858325504-E9jK?utm_source=share&utm_medium=member_desktop&rcm=ACoAADcVYFABRIabvn5qLXAIOgF1hho5ZOgfGMk" target="_blank" class="project-link">
+          View Full Report
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Career</div>
+  <h2 class="section-title">Work <em>Experience</em></h2>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Apr 2025 – Present</div>
+        <div class="exp-org">Digital Health Africa · Remote</div>
+      </div>
+      <div>
+        <div class="exp-role">Program & M&E Officer</div>
+        <p class="exp-desc">Led design & implementation of a comprehensive M&E logframe, spearheaded the continent-wide "Advancing Gender-Responsive Health Systems in Africa" initiative (100+ participants), and facilitated M&E capacity-building training for professionals across Africa.</p>
+        <div class="exp-impact">↑ Supported 200+ beneficiaries across multiple regions</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Aug 2024 – Jun 2025</div>
+        <div class="exp-org">Uni. of Abuja Teaching Hospital · NYSC</div>
+      </div>
+      <div>
+        <div class="exp-role">Administrative Executive</div>
+        <p class="exp-desc">Managed confidential patient and medical records, provided cross-functional coordination between patients and multidisciplinary teams, and applied data management skills to maintain compliance with institutional documentation standards.</p>
+        <div class="exp-impact">↑ Supported outreach reaching 500+ beneficiaries</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Sep 2024 – Mar 2025</div>
+        <div class="exp-org">Virtual Executive Company · Abuja</div>
+      </div>
+      <div>
+        <div class="exp-role">Data Collector & Analyst</div>
+        <p class="exp-desc">Collected, cleaned, and analyzed survey and operational datasets; delivered structured reports and visual data summaries to guide client strategy and program planning.</p>
+        <div class="exp-impact">↑ Processed 500+ survey responses informing key business decisions</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">May 2021 – Oct 2021</div>
+        <div class="exp-org">Federal Ministry of Health · Ilorin</div>
+      </div>
+      <div>
+        <div class="exp-role">Health Education Officer (Intern)</div>
+        <p class="exp-desc">Participated in multi-agency advocacy campaigns on TB, Hepatitis B, HIV/AIDS, and malaria; organized community outreach, workshops, and awareness campaigns across Kwara State.</p>
+        <div class="exp-impact">↑ Reached 1,000+ community members across Kwara State</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <div class="section-label">Credentials</div>
+  <h2 class="section-title">Certifications &<br><em>Affiliations</em></h2>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-year">2026</div>
+      <div class="cert-name">Data Analysis (Excel, SPSS & AI Automation)</div>
+      <div class="cert-issuer">UltraTech Systems</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-year">2025</div>
+      <div class="cert-name">Monitoring & Evaluation Workshop</div>
+      <div class="cert-issuer">Digital Health Africa</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-year">2025</div>
+      <div class="cert-name">Data Analytics Bootcamp</div>
+      <div class="cert-issuer">Alex the Analyst</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-year">2025</div>
+      <div class="cert-name">Power BI Bootcamp</div>
+      <div class="cert-issuer">Power BI Project Club</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-year">2024</div>
+      <div class="cert-name">Google Data Analytics Professional Certificate</div>
+      <div class="cert-issuer">Google</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-year">2025–2028</div>
+      <div class="cert-name">Licensed Member – CHES</div>
+      <div class="cert-issuer">Certified Health Education Specialist</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-year">2025</div>
+      <div class="cert-name">Fellow – Aspire Leadership Training</div>
+      <div class="cert-issuer">Leadership Fellowship</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-year">2025</div>
+      <div class="cert-name">Fellow – SDG Advocate</div>
+      <div class="cert-issuer">Sustainable Development Goals Network</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-year">2023</div>
+      <div class="cert-name">Licensed Member – TRCN</div>
+      <div class="cert-issuer">Teacher Registration Council of Nigeria</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get in Touch</div>
+  <h2 class="section-title">Let's <em>Connect</em></h2>
+  <div class="contact-grid">
+    <div class="contact-intro">
+      <p>I'm open to opportunities in data analysis, monitoring & evaluation, research, and program management — especially roles at the intersection of public health, digital health, and development. Let's talk.</p>
+      <div class="contact-items">
+        <a href="mailto:daramolaomowunmi62@gmail.com" class="contact-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6" style="fill:none;stroke:white;stroke-width:2"/></svg>
+          </div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-value">daramolaomowunmi62@gmail.com</div>
+          </div>
+        </a>
+        <a href="tel:+2348132737578" class="contact-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 10.8 19.79 19.79 0 01.88 2.18 2 2 0 012.86 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="ci-label">Phone</div>
+            <div class="ci-value">+234 813 273 7578</div>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/zainab-tajudeen-omowumi-9005b3219" target="_blank" class="contact-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <div>
+            <div class="ci-label">LinkedIn</div>
+            <div class="ci-value">linkedin.com/in/zainab-tajudeen-omowumi</div>
+          </div>
+        </a>
+        <a href="https://github.com/ZainabTajudeen" target="_blank" class="contact-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          </div>
+          <div>
+            <div class="ci-label">GitHub</div>
+            <div class="ci-value">github.com/ZainabTajudeen</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="cv-download">
+      <h3>Download My CV</h3>
+      <p>Full resume with work history, credentials, and references available on request.</p>
+      <a href="zainab-cv.pdf" download class="cv-btn">↓ Download CV (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Zainab Tajudeen Omowumi · Abuja, Nigeria</p>
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/zainab-tajudeen-omowumi-9005b3219" target="_blank">LinkedIn</a>
+    <a href="https://github.com/ZainabTajudeen" target="_blank">GitHub</a>
+    <a href="https://Zainabtajudeen.github.io/Zainab-Tajudeen" target="_blank">Portfolio</a>
+  </div>
+</footer>
+
+</body>
+</html>
